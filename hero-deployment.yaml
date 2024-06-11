@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hero
+  labels:
+    app: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hero
+  template:
+    metadata:
+      labels:
+        app: hero
+    spec:
+      containers:
+      - name: hero
+        image: docker-username/hero
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8000
